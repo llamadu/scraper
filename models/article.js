@@ -34,7 +34,7 @@ var articleSchema = new Schema({
 });
 
 // Create the article model using the articleSchema
-var article = mongoose.model("article", articleSchema);
+var Article = mongoose.model("Article", articleSchema);
 
 // Export the article model
-module.exports = article;
+module.exports = Article;
