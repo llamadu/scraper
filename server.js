@@ -1,38 +1,50 @@
 var express = require("express");
-var bodyParser = require("body-parser");
-var logger = require("morgan");
+var exphbs = require("express-handlebars");
+// var logger = require("morgan");
 var mongoose = require("mongoose");
 
-var db = require("./models");
 
 var PORT = process.env.PORT || 3000;
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-
+//initialize express
 var app = express();
 
-app.use(logger("dev"));
+//use morgan logger for logging requests
+// app.use(logger("dev"));
+//parse request body as JSON
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.use(bodyParser.urlencoded({ extended: true }));
-
+//make public a static folder
 app.use(express.static("public"));
 
-mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI, {
-  // useMongoClient: true
-});
 
-// db.Headline.create();
-// db.Note.create();
 
-require("./routes/index.js")(app)
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
-// additional libraries
-var exphbs = require("express-handlebars");
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+// Handlebars
+app.engine(
+    "handlebars",
+    exphbs({
+        defaultLayout: "main"
+    })
+);
 app.set("view engine", "handlebars");
 
-app.listen(PORT, function() {
-  console.log("App running on port " + PORT + "!");
+// Routes
+require("./routes/apiRoutes")(app);
+require("./routes/htmlRoutes")(app);
+
+
+// Start the server
+app.listen(PORT, function(){
+    console.log(
+        "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+        PORT,
+        PORT
+      );
 });
+
+module.exports = app;
