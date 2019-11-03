@@ -1,170 +1,124 @@
-html {
-    position: relative;
-    min-height: 100%;
-  }
-  
-  body {
-    margin-bottom: 80px;
-    background-image: url("../images/paper.png");
-  }
-  
-  .card a:not([href]):not([tabindex]).scrape-new {
-    color:gray;
-  }
-  
-  .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 80px;
-    color: white;
-    background-color: gray;
-  }
-  
-  .navbar {
-    margin-bottom: 0;
-  }
-  
-  .jumbotron {
-    position: relative;
-    width: 100%;
-    height: 500px;
-    padding: 0;
-    font-family: 'Libre Baskerville', serif;
-    box-shadow: 10px 5px 20px 2px lightslategrey;
-  }
-  
-  .jumbotron .overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: auto;
-    background: linear-gradient(#333, black);
-    opacity: 0.7;
-  }
-  
-  .jumbotron .background-image {
+body, html {
     height: 100%;
-    background-image: url("../images/newspaper.jpg");
+}
+
+body {
+    background-image: url("../images/lined_paper.png");
+}
+.titleJumbotron {
+    margin: 0px;
+    background: url("../images/coffee_image.jpg") no-repeat center center;
     background-size: cover;
-  }
-  
-  .jumbotron .caption {
-    position: absolute;
-    top: 30%;
-    width: 100%;
+    background-attachment: fixed;
+}
+
+.headerDivJumbotron {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background: url("../images/lined_paper.png");
     text-align: center;
-  }
-  
-  .jumbotron .caption h1,
-  .jumbotron .caption p {
+    border: 5px solid darkgray;
+    padding: 20px;
+}
+
+#headerJumbotron {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    border-bottom: 2px solid darkgray;
+    
+}
+
+#subheaderJumbotron {
+    background: url("../images/lined_paper.png");
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px
+}
+
+#navbar {
+    background-image: url("../images/chalkboard.jpg");
+	padding: 10px 30px 10px 30px;
+	font-family: Arial, Helvetica, sans-serif;
+	overflow: hidden;
+}
+
+.navLink {
     color: white;
-  }
-  
-  .jumbotron h1 {
-    font-size: 80px;
-    font-weight: 800;
-  }
-  
-  .jumbotron p {
-    font-size: 30px;
-  }
-  
-  .article-container {
-    padding-bottom: 25px;
-  }
-  
-  .card {
-    border-radius: 0;
-    box-shadow: 3px 3px 20px lightslategrey;
-    margin: 20px 0;
-  }
-  
-  .card .card-header {
-    background-color:gray;
-    position: relative;
-    padding-top: 30px;
-    padding-bottom: 30px;
-  }
-  
-  .card .card-header h3 {
-    color: white;
-  }
-  
-  .card .card-header .btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-  }
-  
-  .card .card-header .btn.delete {
-    right: 160px;
-  }
-  
-  .card .card-body {
-    font-size: 16px;
-  }
-  
-  .card .card-header .article-link {
-    color: white;
-    display: inline-block;
-    width: 80%;
-  }
-  
-  .footer > .container > p {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 5px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    margin: 0;
-    font-weight: 800;
-    background: gray;
-  }
-  
-  .navbar-nav > li > a.scrape-new,
-  .navbar-nav > li > a.clear {
-    padding: 10px;
-    margin-top: 10px;
-    margin-left: 10px;
-    font-weight: 800;
-    color: white;
-  }
-  
-  .navbar-nav > li > a.scrape-new:hover,
-  .navbar-nav > li > a.clear:hover {
-    background: #3e423e;
-  }
-  
-  .navbar-nav > li > a.scrape-new:active {
-    background: #493739;
-  }
-  
-  .scrape-new {
-    cursor: pointer;
-  }
-  
-  .m-top-80 {
-    margin-top: 80px;
-  }
-  
-  textarea {
-    padding: 10px;
-    resize: none;
+    margin-right: 50px;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
     width: 100%;
-  }
-  
-  .bootbox-body .btn {
-    float: right;
-    margin: 5px;
-  }
-  
-  .note.list-group-item .btn {
-    position: relative;
-    bottom: 10px;
-  }
-  
+    background-image: url(../images/chalkboard.jpg);
+    z-index: 2;
+}
+
+.card-header {
+    background-image: url(../images/chalkboard.jpg);
+}
+
+.card {
+    margin-top: 20px;
+}
+
+.card-body {
+    border: 2px solid darkgray;
+}
+
+.headlineLink {
+    text-decoration: none;
+    color: white
+}
+
+.headlineLink:hover {
+    text-decoration: none;
+    color: gray;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.articleImage {
+    width: 100%
+}
+
+.buttonColumn {
+    margin-right: 0px
+}
+
+.saveArticleButton {
+    margin-top: 10px;
+    padding: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif
+}
+
+.modal-header {
+    background-image: url(../images/chalkboard.jpg);
+    color: white;
+    font-family: Georgia, Times, 'Times New Roman', serif;
+}
+
+.buttonRow {
+    margin-top: 10px
+}
+
+#titleinput,
+#bodyinput {
+    width: 100%
+}
+
+.articleContainer {
+    padding-bottom: 50px;
+    padding-top: 20px
+}
+
+.noteCard {
+    display: block;
+    width: 100%
+}
+
+.noteCardBody {
+    color: darkgray;
+}

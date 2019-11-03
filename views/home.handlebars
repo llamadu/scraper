@@ -1,78 +1,98 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="/">Press and Scrape</a>
-  <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false"
-    aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<div class="row">
+    <div class="col-12">
+        <div class="jumbotron titleJumbotron">
+            <div class="headerDivJumbotron">
+                <div id="headerJumbotron">NPR News</div>
+                <div id="subheaderJumbotron">Mongo Scraper</div>
+            </div>
+        </div>
+    </div>
+</div>
 
-  <div class="collapse navbar-collapse" id="navbarColor01">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Home
-          <span class="sr-only">(current)</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/saved">View Saved Articles</a>
-      </li>
-      <li class="nav-item">
-        <a class="btn btn-danger scrape-new">Get New Articles</a>
-      </li>
-      <li class="nav-item">
-        <a class="btn btn-danger clear">Clear Articles</a>
-      </li>
+<nav class="navbar navbar-expand" id="navbar">
+
+    <ul class="navbar-nav">
+        <li class="nav-item">
+        <a class="nav-link navLink" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link navLink" href="/saved">Saved Articles</a>
+        </li>
     </ul>
-  </div>
+    
+    <button type="button" class="btn btn-primary" id="scrapeArticlesButton">Scrape New Articles</button>
+
 </nav>
 
-<div class="jumbotron text-center">
-  <div class="overlay">
-  </div>
-  <div class="background-image">
-  </div>
-  <div class="caption">
-    <h1>Mongo Scraper</h1>
-    <p>New York Times Edition</p>
-  </div>
-</div>
-<div class="container-fluid article-container">
-  {{#each articles}}
-  <div data-_id="{{this._id}}" class="card">
-    <div class="card-header">
-      <h3>
-        <a class="article-link" target="_blank" rel="noopener noreferrer" href="{{this.url}}">{{this.headline}}</a>
-        <a class="btn btn-success save">Save Article</a>
-      </h3>
+<div class="articleContainer">
+    <div class="row">
+
+        <div class="col-1">
+        </div>
+
+        <div class="col-10 articleColumn">
+            
+            {{#each articles}}
+
+                <div class="card">
+                    <div class="card-header">
+                        <a class="headlineLink" href={{link}} target="_blank">{{headline}}</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-2">
+                                <img class="articleImage" src={{photo}}>
+                            </div>
+
+                            <div class="col-8">
+                                <p>{{summary}}{{date}}</p>
+                            </div>
+
+                            <div class="col-2 buttonColumn">
+                                <button type="button" class="btn btn-primary saveArticleButton" data-id={{id}}>Save Article</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            {{/each}}
+        </div>
+
+        <div class="col-1">
+        </div>
+
     </div>
-    <div class="card-body">{{this.summary}}</div>
-  </div>
-  {{/each}} {{#unless articles.length}}
-  <div class='alert alert-warning text-center'>
-    <h4>Uh Oh. Looks like we don't have any new articles.</h4>
-  </div>
-  <div class="card">
-    <div class="card-header text-center">
-      <h3>What Would You Like To Do?</h3>
-    </div>
-    <div class="card-body text-center">
-      <h4>
-        <a class="scrape-new">Try Scraping New Articles</a>
-      </h4>
-      <h4>
-        <a href="/saved">Go to Saved Articles</a>
-      </h4>
-    </div>
-  </div>
-  {{/unless}}
 </div>
 
-<footer class="footer">
-  <div class="container">
-    <p>New York Times Mongo Scraper</p>
-  </div>
-</footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
-<script src="/assets/javascript/index.js"></script>
+<div class="modal fade" id="scrapeArticlesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title articlesScrapedTitle" >Articles Scraped</h5>
+      </div>
+      <div class="modal-body articlesScrapedBody">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="closeScrapeButton" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="articleSavedModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title articleSavedTitle" >Success!</h5>
+      </div>
+      <div class="modal-body articleSavedBody">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="closeArticleButton" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
